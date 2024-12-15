@@ -8,9 +8,30 @@ package luyentapltm;
  *
  * @author duc.nt
  */
+import java.io.*;
+import java.net.Socket;
 import java.util.*;
 public class TCP_Byte_Stream {
     public static void main(String[] args) {
+        
+        try(Socket socket = new Socket("203.162.10.109", 2206) ){
+            InputStream inp = socket.getInputStream();
+            OutputStream oup = socket.getOutputStream();
+            
+            String mes = "B21DCCN251;38jGycbS";
+            oup.write(mes.getBytes());
+            oup.flush();
+            
+            byte[] buffer = new byte[1024];
+            int bytesRead = inp.read(buffer);
+            System.out.println(bytesRead);
+            String a = new String(buffer, 0, bytesRead);
+            System.out.println(a);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
         String a = "5,10,20,25,50,40,30,35";
         System.out.println(solve(a));
         

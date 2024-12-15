@@ -2,36 +2,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package luyentapltm;
+package TCP;
+
+import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 
 /**
  *
- * @author duc.nt
+ * @author admin
  */
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
-import java.time.*;
-public class TCP_Object_Stream {
-    public static void main(String[] args) throws ParseException {
-         Customer918 customer = new Customer918(1, "C001", "nguyen van hai duong", "05-15-1999", "a");
-         customer.userName = customer.chuanHoaUsername(customer.name);
-         customer.name = customer.chuanHoaHoTen(customer.name);
-         customer.dayOfBirth = customer.chuanHoaNgaySinh(customer.dayOfBirth);
-         System.out.println(customer);
-         
-    }
-}
-
-class Customer918 {
+class Customer implements Serializable{
     int id;
     String code;
     String name;
     String dayOfBirth;
     String userName;
-    private static final long serialVersionUID = 918;
+    private static final long serialVersionUID = 20170711;
 
-    public Customer918(int id, String code, String name, String dayOfBirth, String userName) {
+    public Customer(int id, String code, String name, String dayOfBirth, String userName) {
         this.id = id;
         this.code = code;
         this.name = name;
@@ -75,5 +67,3 @@ class Customer918 {
     }
     
 }
-
-
