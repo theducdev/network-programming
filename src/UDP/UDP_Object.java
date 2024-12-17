@@ -32,7 +32,7 @@ public class UDP_Object {
         DatagramPacket nhan_packet = new DatagramPacket(nhan_buffer, nhan_buffer.length);
         datagramSocket.receive(nhan_packet);
         
-        System.out.println("nhan duoc: " + byteToString(nhan_buffer)); 
+//        System.out.println("nhan duoc: " + byteToString(nhan_buffer)); 
         byte[] request_id_buffer = new byte[8];
         System.arraycopy(nhan_buffer, 0, request_id_buffer, 0, 8);
         String request_id = new String(request_id_buffer);
@@ -55,6 +55,8 @@ public class UDP_Object {
         System.arraycopy(gui_student_buffer, 0, gui_buffer, 8, gui_student_buffer.length);
         
         DatagramPacket gui_packet = new DatagramPacket(gui_buffer, 0, gui_buffer.length, address, 2209);
+        
+        datagramSocket.send(gui_packet);
         System.out.println("thu lai: " + byteToString(gui_buffer)); 
         datagramSocket.close();
     }
